@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- Задание 1 -->
+        <button @click="reverseButtonText" class="btn">{{buttonText}}</button>
+        <!-- Задание 2 -->
+        <div class="content">
+            <button @click="addNewElToList" class="btn">Добавить</button>
+            <ul class="list">
+                <li v-for="element in listOfElements" @click="delElFromList">{{element}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+        return {
+            buttonText: 'Перевернуть',
+            listOfElements: ['элемент 1', 'элемент 2', 'элемент 3'],
+            newElement: 'Новый элемент'
+        };
+    },
+    methods: {
+        reverseButtonText() {
+            this.buttonText = this.buttonText.split('').reverse().join('');
+        },
+        addNewElToList(){
+            this.listOfElements.push(this.newElement);
+        },
+        delElFromList(event) {
+            event.target.remove();
+        }
+    },
+});
+
+    </script>
+</body>
+</html>
